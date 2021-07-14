@@ -20,12 +20,8 @@ import org.jlab.jnp.physics.*;
  * Standalone skim for Λ -> p+ + π- analysis. (Shortened version with invariant mass and kinematic cuts)
  *
  * @author mfmce
- * @version 12 Jul. 2021
+ * @version 14 Jul. 2021
  */
-
-interface Cut {
-        boolean cut(double x);
-    }
 
 public class Train {
 
