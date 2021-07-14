@@ -10,7 +10,6 @@ import org.jlab.jnp.hipo4.data.Bank;
 import org.jlab.jnp.hipo4.data.Event;
 import org.jlab.jnp.hipo4.data.Schema;
 import org.jlab.jnp.hipo4.data.SchemaFactory;
-import org.jlab.jnp.hipo.data.HipoNode;
 import org.jlab.jnp.hipo4.io.HipoReader;
 import org.jlab.jnp.hipo4.io.HipoWriter;
 import org.jlab.jnp.physics.*;
@@ -41,7 +40,7 @@ public class Train {
     private final static double Q2min       = (double) 1.00;			// [-]
     private final static double Wmin        = (double) 2.00;			// [-]
     private final static double ymax        = (double) 0.80;		   	// [-]
-    private final static double xFmin       = (double) 0.00;			// [-]
+    private final static double xFmin       = (double) -1.00;			// [-]
     private final static double zmax        = (double) 1.00;		   	// [-]
 
     // built in lambdas
@@ -53,7 +52,7 @@ public class Train {
     protected Cut _z  = (double z)  -> { return (z<zmax);   };
 
     protected int counter   = 0;
-    protected int _notify   = 10000;
+    protected int _notify   = 100;
 
     public static void main(String[] args){
 
@@ -78,15 +77,16 @@ public class Train {
             HipoWriter writer = new HipoWriter(reader.getSchemaFactory());
             writer.open(outpath);
 
-            // Loop events
             while(reader.hasNext()==true) {
+
                 reader.nextEvent(event);
                 boolean flag = test_wagon.processDataEvent(event, reader.getSchemaFactory(), writer);
             }
             System.out.println("counter = "+test_wagon.counter);
+
             writer.close();
         }
-    }
+    } // main()
 	
 	public boolean processDataEvent(Event event, SchemaFactory factory, HipoWriter writer) {
 
@@ -172,7 +172,7 @@ public class Train {
 		} // for ( index in bank...)
 
 		return false;
-	}
+	} // processDataEvent()
 
     private HashMap<String, Boolean> computeCuts(double px_e, double py_e, double pz_e, double p2_e,
                                                       double px_pi, double py_pi, double pz_pi, double p2_pi,
@@ -225,17 +225,6 @@ public class Train {
         cuts.put("z",this._z.cut(z));
 
         return cuts;
-    }
+    } // computeCuts()
 
-	private HashMap<Integer, ArrayList<Integer>> mapByIndex(HipoNode indices) {
-		HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
-		for (int ii = 0; ii < indices.getDataSize(); ii++) {
-			final int index = indices.getInt(ii);
-			if (!map.containsKey(index))
-				map.put(index, new ArrayList<Integer>());
-			map.get(index).add(ii);
-		}
-		return map;
-	}
-
-}
+} // class
