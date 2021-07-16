@@ -77,7 +77,7 @@ public class LambdaTrain {
             // schemaFactory.addSchema(reader.getSchemaFactory().getSchema("RUN::config")); //NOTE: For just writing specific banks.
             // schemaFactory.addSchema(reader.getSchemaFactory().getSchema("REC::Event")); //NOTE: For just writing specific banks.
             // schemaFactory.addSchema(reader.getSchemaFactory().getSchema("MC::Lund")); //NOTE: For just writing specific banks.
-            schemaFactory.readFile("/Users/mfm45/trains/lib/etc/kinematics.json"); //NOTE: Need absolute path here.
+            schemaFactory.readFile("/CLAS12-Trains/lib/etc/kinematics.json"); //NOTE: Need absolute path here.
             // System.out.println("keys = "+schemaFactory.getSchemaKeys()); //NOTE: For just writing specific banks.
             HipoWriter writer = new HipoWriter(schemaFactory);
             writer.open(outpath);
@@ -185,9 +185,11 @@ public class LambdaTrain {
             if ((this._counter % this._notify) == 0 && row == 0) { System.out.println("PROCESSED "+this._counter+" EVENTS"); }
             row++;
         } // for (HashMap<String,Double> ...)
-        // event.write(bank); //TODO: Write list of banks...
-        event.write(kinBank);
-        writer.addEvent(event);
+        if (lkinematics.size()>0) {
+            // event.write(bank); //TODO: Write list of banks...
+            event.write(kinBank);
+            writer.addEvent(event);
+        }
     } // writeEvent()
 
     private HashMap<String,Double> computeKinematics(Part electron, Part proton, Part pion) {
