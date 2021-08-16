@@ -2,20 +2,20 @@
   {
     "type"  : "bank",
     "name"  : "REC::Kinematics",
-    "group" : 2000,
+    "group" : 341,
     "item"  : 1,
     "entries":[
-      {"name":"idxe"     , "type":"I", "info":"electron index"},
-      {"name":"idxp"     , "type":"I", "info":"proton index"},
-      {"name":"idxpi"  , "type":"I", "info":"pi- index"},
-      {"name":"Q2"      , "type":"D", "info":"Q2 momentum transfer"},
-      {"name":"nu"      , "type":"D", "info":"nu"},
-      {"name":"W"      , "type":"D", "info":"W"},
-      {"name":"x"      , "type":"D", "info":"x momentum fraction"},
-      {"name":"y"      , "type":"D", "info":"y"},
-      {"name":"z"      , "type":"D", "info":"z energy fraction"},
-      {"name":"xF"    , "type":"D", "info":"x Feynman"},
-      {"name":"mass"    , "type":"D", "info":"invariant mass"}
+      {"name":"idxe",  "id": 1,  "type":"I",   "info":"electron index"},
+      {"name":"idxp",  "id": 2,  "type":"I",   "info":"proton index"},
+      {"name":"idxpi", "id": 3,  "type":"I",   "info":"pi- index"},
+      {"name":"Q2",    "id": 4,  "type":"D", "info":"Q2 momentum transfer"},
+      {"name":"nu",    "id": 5,  "type":"D", "info":"nu"},
+      {"name":"W",     "id": 6,  "type":"D", "info":"W"},
+      {"name":"x",     "id": 7,  "type":"D", "info":"x momentum fraction"},
+      {"name":"y",     "id": 8,  "type":"D", "info":"y"},
+      {"name":"z",     "id": 9,  "type":"D", "info":"z energy fraction"},
+      {"name":"xF",    "id": 10, "type":"D", "info":"x Feynman"},
+      {"name":"mass",  "id": 11, "type":"D", "info":"invariant mass"}
     ]
   }
 ]

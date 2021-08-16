@@ -12,10 +12,13 @@ sed -i "s;/CLAS12-Trains;/path/to/CLAS12-Trains;g" lib/src/main/java/org/jlab/tr
 Then add the following to your startup script:
 ```bash
 pushd /path/to/CLAS12-Trains >> /dev/null
-source ./env.sh
+source ./bin/env.sh
 popd >> /dev/null
 ```
-(Use `./env.csh` for c shell.)
+(Use `./bin/env.csh` for c shell.)
+
+## Getting Started
+TODO: You should now be able to run the trains with ```train```
 
 #
 
