@@ -1,0 +1,4 @@
+#!/bin/bash
+
+$C12TRAINS/gradlew run -q -p $C12TRAINS $JAVA_OPTS --args="`echo " $@"`"
+#NOTE: Space is important in " $@" so you don't get empty argument error
