@@ -37,3 +37,18 @@ dependencies {
     implementation 'org.jlab.jnp:jnp-utils:2.0-SNAPSHOT'   // From https://clasweb.jlab.org/jhep/maven
     implementation 'org.jlab.jnp:jnp-physics:1.0-SNAPSHOT' // From https://clasweb.jlab.org/jhep/maven
 }
+
+// tasks.withType(JavaExec) {
+//     systemProperty "java.library.path"
+// }
+
+task run(type: JavaExec) {
+   classpath = files('build/libs/lib.jar')
+   classpath += sourceSets.main.runtimeClasspath
+   main = 'org.jlab.trains.LambdaTrain'
+}
+
+tasks.named('test') {
+    // Use junit platform for unit tests.
+    useJUnitPlatform()
+}
