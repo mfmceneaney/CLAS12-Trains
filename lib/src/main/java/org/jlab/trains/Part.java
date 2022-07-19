@@ -33,4 +33,23 @@ public class Part {
     public double p2() { return this.px*this.px+this.py*this.py+this.pz*this.pz; }
     public double p() { return Math.sqrt(this.px*this.px+this.py*this.py+this.pz*this.pz); }
 
+    /**
+    * Access particle's azimuthal angle.
+    * @return double phi
+    */
+    protected double phi() {
+
+        return this.py>0 ? Math.acos(this.px/this.pt()) : -Math.acos(this.px/this.pt());
+        // return Math.asin(this._py/this.pt()); //NOTE: Keeps return value between ±pi
+    }
+
+    /**
+    * Access particle's polar angle.
+    * @return double theta
+    */
+    protected double theta() {
+
+        return Math.acos(this.pz/this.p());
+    }
+
 } // class
