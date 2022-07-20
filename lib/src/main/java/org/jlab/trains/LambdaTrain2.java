@@ -215,14 +215,19 @@ public class LambdaTrain {
                                         double px_p_ = mcbank.getFloat("px", index_);
                                         double py_p_ = mcbank.getFloat("py", index_);
                                         double pz_p_ = mcbank.getFloat("pz", index_);
-                                        Part proton_ = new Part(index_,px_p,py_p,pz_p);
+                                        int    par_proton_ = mcbank.getInt("parent",index_);
+                                        Part proton_ = new Part(index_,px_p_,py_p_,pz_p_,par_proton_);
 
                                         // Get momenta for pion
                                         double px_pi_ = mcbank.getFloat("px", index2_);
                                         double py_pi_ = mcbank.getFloat("py", index2_);
                                         double pz_pi_ = mcbank.getFloat("pz", index2_);
                                         int    par_pi_ = mcbank.getInt("parent",index2_);
-                                        Part pion_ = new Part(index2_,px_pi,py_pi,pz_pi);
+                                        Part pion_ = new Part(index2_,px_pi_,py_pi_,pz_pi_,par_pi_);
+
+                                        int idx_lambda_ = -1;
+                                        if (par_proton_==par_pi_) idx_lambda_ = par_proton_;
+                                        
 
                                         // Add data to arrays
                                         ArrayList<Part> particles = new ArrayList<Part>();
